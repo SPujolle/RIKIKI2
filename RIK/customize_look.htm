@@ -1,0 +1,70 @@
+<H1>Customize stylesheet</H1>
+
+RIKIKI layout is controled by one file "style.css".
+
+The basic style is crudely adaptative to screen size to be readable on a mobile device. When screen size is under 900 pixels an reactive style is used. <br>
+If tou want more you need tu customize the "style.css" file :
+<ul>
+<li> You can change options in it to change the look and disposition.</li>
+<li> You can add your own styles.</li>
+</ul>
+
+
+<script type="text/javascript">
+function greenLook(){
+document.getElementById("demo").innerHTML = "<h4>COLOR SCHEME GREEN</h4>";
+
+var x = document.getElementById("pageStyle");
+x.setAttribute("href", "style_green.css");
+}
+function basicLook(){
+document.getElementById("demo").innerHTML = "<h4>BASIC COLOR SCHEME</H4>";
+
+var x = document.getElementById("pageStyle");
+x.setAttribute("href", "style.css");
+}
+//=============================================================//
+function horBar(){
+document.getElementById("demo").innerHTML = "<h4>THE LEFT COLUMN BECOME A ROW</H4>";
+var x = document.getElementsByClassName("box");
+x[0].setAttribute("style", "flex-direction: column;");
+var x = document.getElementsByClassName("leftC");
+x[0].setAttribute("style", "flex-direction: row;");
+}
+//==============================================================//
+function leftCol(){
+document.getElementById("demo").innerHTML = "<h4>THE LEFT COLUMN DISPLAY SECOND LEVEL PAGES</H4>";
+var x = document.getElementsByClassName("box");
+x[0].setAttribute("style", "flex-direction: row;");
+var x = document.getElementsByClassName("leftC");
+x[0].setAttribute("style", "flex-direction: column;");
+}
+//==============================================================//
+function rightCol(){
+document.getElementById("demo").innerHTML = "<h4>THE LEFT COLUMN BECOME A RIGHT COLUMN</H4>";
+var x = document.getElementsByClassName("box");
+x[0].setAttribute("style", "flex-direction: row-reverse;");
+var x = document.getElementsByClassName("leftC");
+x[0].setAttribute("style", "flex-direction: column;");
+}
+</script>
+Here you find simple example of customization you can do :
+<br>
+<div style="display:block;">
+<style>button{font-family:verdana;width:20em;text-align:left;margin:10px;}</style>
+<button type="button" onclick="basicLook()")>Color : "BASIC"</button><br>
+<button type="button" onclick="greenLook()")>Color : "GREEN"</button><br>
+<button type="button" onclick="horBar()">disposition : "Horizontal menu"</button><br>
+<button type="button" onclick="leftCol()">disposition : "left column menu"</button><br>
+<button type="button" onclick="rightCol()">disposition : "right column menu"</button><br>
+</div>
+<div style="display:block; text-align:center" id="demo">
+</div>
+
+
+
+
+
+
+
+

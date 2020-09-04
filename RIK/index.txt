@@ -1,0 +1,4 @@
+#"Download and install",Files_Install.md,E
+#"Window layout and index.txt syntax",layout.md,F
+#"Write content",gettingStarted.md,G
+#"Customize look",customize_look.htm,"Customize look using stylesheet"
