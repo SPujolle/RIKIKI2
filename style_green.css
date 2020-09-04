@@ -1,0 +1,205 @@
+
+/* create a separate and optional style sheet for your page  */
+/* doing that avoid to chang this style sheet that  */
+@import "customStyle.css"; 
+
+div {
+  /*border: 1px solid black; */
+  padding : 10px ;
+  font-family : verdana ;
+  font-size : 14px;
+ 
+}
+a{
+	color : blue ;
+}
+
+a:hover {
+  background-color: yellow;
+}
+p{
+	
+	 max-width: 50em;
+}
+
+code{
+	color : black ;
+	background-color : azure ;
+	font-size : 12px;
+	display: inline-block;
+}
+li{
+		 max-width: 50em;
+		 line-height:150%;
+}
+
+.main_frame{
+	 max-width: 1500px;
+	 margin : auto ;
+	 padding : 0 ;
+
+}
+
+
+.box {
+	/* central area */
+	color: green;
+	padding : 0;
+	 border: 0px solid grey;
+	 border-bottom: 1px solid grey ;
+	 max-width: 1500px;
+	display: flex;
+	align-items: flex-start;
+	flex-direction : row; /*row for large screen */
+	justify-content: space-between;
+}
+.cent {
+		background-color : whitesmoke;
+		 border: 0px solid grey;
+		width : 100% ;
+
+}
+/*======================================================*/
+.leftC{
+	/*border: 1px solid blue; */
+	
+	display : flex;
+	flex-direction:column;
+		  min-width:100px;
+
+	padding : 0;
+	position: -webkit-sticky;
+	position: sticky; top: 10;
+	align-self: flex-start; /* <-- this is the fix */
+	max-width : 20% ;	
+}
+
+
+.leftC .leftTitre{
+	color : black ;
+	font-weight : 500;
+	border-bottom : 1px solid grey ;
+	padding-left:0.5em;
+}
+
+.leftC .currentPage {
+			background-color : lightGrey ;
+			color : black;
+}
+.leftC A {
+		font-size : 0.9em;;
+		font-weight : 600;
+		text-decoration: none;
+		background-color : #8FBC8F;
+		border-radius : 5px;
+		color : #606060;
+		display : inline-block ;
+		margin : 0.2em;
+		padding-top: 0.5em;
+		padding-bottom:0.5em;
+		padding-left : 1em;
+		padding-right : 1em;	
+
+}
+a:hover {
+  background-color: yellow;
+}
+
+/*============================================== */
+.main_menu {
+	padding : 0;
+	padding-bottom :4px;
+	padding-top : 2em;
+	border-bottom: 1px solid black;
+		border-radius : 5px;
+	  height: 4em;
+  background-color: #8FBC8F; /* For browsers that do not support gradients */
+  background-image: linear-gradient(DarkSeaGreen, yellow); 
+}
+
+
+.main_menu A {
+		border-radius : 5px;
+		border :1px solid grey;
+		text-decoration: none;
+
+		/*background-color : SkyBlue ;*/
+		display : inline-block ;
+		margin : 0em;
+		padding : 0.2em;
+		padding-left : 1em;	
+		padding-right : 1em;	
+}
+/*============================================== */
+.bottomNaviArea{
+	 text-align : center ;
+	 font-style : italic ;
+	 background-color : LightGray ;
+}
+
+
+.footer {
+		/*border: 1px solid blue;*/
+		color :  grey ;
+		font-style : italic ;
+		 text-align : center ;
+		font-family : "Comic Sans MS", cursive, sans-serif
+
+}
+.footer A {
+		/*border: 1px solid blue;*/
+		color :  grey ;
+		font-style : italic ;
+		 text-align : center ;
+		font-family : "Comic Sans MS", cursive, sans-serif
+
+}
+/* ================================================ */
+
+
+@media screen and (max-width: 900px) {
+	/* Style for portable/phone devices */
+	.main_menu A {
+		font-size:18px;
+		padding-top:1em;
+		padding-bottom:1em;
+	}
+		.leftC .leftTitre{
+			color:black;
+			background-color : white;
+			border-radius : 5px;
+			border :1px solid grey;
+			margin:0;
+			padding : 0.5em;
+			padding-left : 1em;
+			padding-right : 1em;	
+		}		
+		.leftC A,.currentPage{
+			font-size:18px;
+			background-color : white;
+			border-radius : 5px;
+			border :1px solid grey;
+			margin:0;
+			padding : 0.5em;
+			padding-left : 1em;
+			padding-right : 1em;	
+		}
+
+		
+		.box {
+			flex-direction:column;
+		}
+		.leftC{
+			position: -webkit-sticky;
+			position: sticky; top:15px;
+			flex-direction:row;
+			background-image:none;
+		}
+		
+	code {
+		font-size:24px;
+		 width:550px; overflow-x:scroll ; 
+	}
+		
+}
+

@@ -1,0 +1,20 @@
+// Write the structure of navigation here
+
+"&#127968; HOME",home.htm,"Software home page"
+
+"Rikiki NO CMS",RIK,"A tiny tool to make internet site. This is a RIKIKI powered site"
+
+
+
+
+
+"Serial View",serialView/firstPage.htm,"A serial port console/plotter/logger"
+#"Download",  serialView  /chap1.htm,B
+
+
+"Graymap to POV",PERSPECTIVE/  firstPage.md,"A example program to produce a pseudo perspective POV from a graymap image"
+#"Code C",PERSPECTIVE/page2.htm,"Code"
+#"Raw C code modele.c",PERSPECTIVE/modele.html,"Raw code for main program"
+#"Raw C code routines.c", PERSPECTIVE/routines.html,"Raw code for subroutines"
+
+"Contact", about.htm,L
