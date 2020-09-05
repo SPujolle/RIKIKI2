@@ -231,15 +231,24 @@ callPage( i){
 requestFile(cible){
 	var PARENT =this ;
 	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			PARENT.url.push(cible); return 1;
-		} else {
-			return 0;
-		}
-	};	
-	xhttp.open("GET", cible, false);// lecture synchrone du fichier
-	xhttp.send();	
+	var retVal = 0 ;
+	try{
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				//console.log("STAT = "+ this.status + " cible = " + cible);
+				retVal = 1;
+			} else {
+				//console.log("STAT Bis = "+ this.status + " cible = " + cible);
+				retVal =  0;
+			}
+		};	
+		xhttp.open("GET", cible, false);// lecture synchrone du fichier
+		xhttp.send();	
+	}
+	catch(err){
+		console.log ("ERROR = "+err.message);
+	}
+	return retVal ;
 }
 
 pageUniqueIdentifier(N){
@@ -263,14 +272,23 @@ pageUniqueIdentifier(N){
 }
 
 parseSubIndexTXT(dirName){
-	
 	var xhttp = new XMLHttpRequest();
 	var PARENT =this ;
+	
 	// recherche du fichier index.m ou html, prmiere page du repertoire
-	var options =["md","htm","html"]; var i = 0 ;
+	var options =["md","htm","html"]; var i = 0 ; var R = 0
 	do{
+		if ( i == options.length){console.log("missing index .htm , md or html in folder : " + dirName) ; break;}
 		var cible = dirName+"/index."+options[i];
-	}while(this.requestFile(cible)==0)
+		R = this.requestFile(cible);
+		//console.log(" cherche = "+ cible + "  RET = " + R);				
+		i++ ;
+	}while(R == 0 )
+
+	//console.log("found index tete = "+ cible);
+	this.url.push(cible); 
+	var N = this.title.length - 1; 
+	this.navLink.push( this.pageUniqueIdentifier(N));
 	//================================================================//
 
 	xhttp.onreadystatechange = function() {
@@ -292,7 +310,6 @@ parseIndexTXT(lines,dir){
 		var line = lines[i];
 		if(line[0] != this.commentChar ){ // strip comment lines //
 			var fields = line.split(',');
-			
 			switch(fields.length)
 			{
 				case 0: break ;
@@ -307,14 +324,13 @@ parseIndexTXT(lines,dir){
 				if(E == "md" || E == "htm" || E == "html"){
 					var D = (dir == "" ? "" : dir +"/")
 					var U = (D + fields[1]).replace(/\s/g,'');
-					console.log(U);
 					this.url.push(U);	// remove white char in url field
-				}else{
-					this.parseSubIndexTXT(fields[1]); // On point sur un repertoire, allez parser le index.txt du rep					
-				}	
 				var N = this.title.length - 1; 
 				this.navLink.push( this.pageUniqueIdentifier(N));
-
+				//console.log("N "+N+" URL = "+U + " Titre = " + this.title[this.title.length -1] + " ID = "+   this.pageUniqueIdentifier(N));	
+				}else{
+					this.parseSubIndexTXT(fields[1]); // On pointe sur un repertoire, allez parser le index.txt du rep					
+				}	
 			}	
 		}	
 	}
@@ -368,7 +384,7 @@ mainMenu(){
 	var xhttp = new XMLHttpRequest();
 	var PARENT =this ;
 	var LOCAL = window.location.pathname ;
-	console.log("LOCAL = " + LOCAL);
+	//console.log("LOCAL = " + LOCAL);
 	// Cration du main menu
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
